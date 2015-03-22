@@ -4,19 +4,22 @@ class App {
 
     final static String[] names={"T.M.S.U.B.Abeysinghe", "A.S.M.C.BAgalawatte", "W.G.N.M.Amarasinghe", "D.M.A.M.K.L.Andradi", "A.S.P.Athukorala", "B.A.N.Y.Balaarachchi", "K.Balakayan", "B.M.N.M.Balasooriya", "H.M.A.P.KBandara", "K.M.P.Bandara", "R.M.L.SBandara", "B.S.Bulathsinhala", "B.V.O.Chathuranga", "G.D.Chathuranga", "G.D.RDabarera", "W.T.Darshana", "J.P.T.Dhanushka", "U.W.T.DEhelepola", "C.N.Ekanayake", "M.S.D.Eranga", "P.AGregory", "D.L.Gunaratne", "K.A.R.L.A.Gunawardana", "S.D.T.Guruge", "M.G.Harischandra", "S.K.E.Harshani", "D.H.M.S.N.Herath", "T.D.Hirimuthugoda", "J.D.C.Jayalath", "D.N.Jayanath", "O.M.D.N.I.Jayathilaka", "K.E.G.A.P.Kadurugasyaya", "D.S.L.Karunasekara", "J.L.M.M.Jayawardena", "K.P.D.H.M.Karunatissa", "P.Keerthanan", "B.U.Kulathilaka", "Y.M.P.NLankathilaka", "M.M.D.B.Marasinghe", "N.B.U.SNanayakkara", "D.N.U.Naranpanawa", "K.N.M.Perera", "W.D.Y.NPiyasinghe", "W.M.S.Prasadima", "E.K.V.MPremaratne", "M.P.Prematilake", "R.M.P.Rajapaksha", "R.M.D.MRathnayake", "A.R.S.PRodrigo", "J.CSamarasinghe", "S.Selvaluxmiy", "A.S.D.Senevirathna", "V.Seralathan", "E.L.W.Shantha", "K.V.C.C.Somathilaka", "D.N.Tennakoon", "R.Velmakivan", "W.M.D.B.Weerakoon", "I.L.Weeraratne", "N.B.Weerasinghe", "W.M.T.G.I.S.Weerasooriya", "W.R.M.B.C.Wickramasinghe", "Y.A.D.S.S.Wijerathna", "K.W.H.N.T.Hettiarachchi", "W.T.S.Wehalla", "S.S.Manamendra", "M.B.K.Jayawardhana", "K.G.DE.A.Rajapakse"};
 
-    static BTree<Student> students;
+    // static BTree<Student> students;
+    private class Student extends BTree {
+        //
+    };
 
     public static void main(String[] args) {
         
         for (int i=0; i<regnos.length; i++) {
-            Student stu=new Student(regnos[i], names[i]);
-            students.insert(stu);
-            for (int j=0; j<6; j++) {
-                stu.gpas.insert(3.0);
-            }
+            // Student stu=new Student(regnos[i], names[i]);
+            // students.insert(stu);
+            // for (int j=0; j<6; j++) {
+            //     stu.gpas.insert(3.0);
+            // }
         }
 
-        students.in_order();
+        // students.in_order();
     
     }
 }

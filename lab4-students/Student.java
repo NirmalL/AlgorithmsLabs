@@ -11,13 +11,17 @@ class Student extends BTree<Grade> implements Comparable<Student> {
          @Override
          public void in_order(BTreeNode<Grade> grade) {
             if (grade!=null) {
+                
                 in_order(grade.left);
+                
                 gpa+=grade.data.grade;
                 courses++;
                   // test
                   System.out.print(grade.data.course+":");
                   System.out.print(grade.data.grade+"\n");
+                
                 in_order(grade.right);
+                
             }
          }
 

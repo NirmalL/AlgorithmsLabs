@@ -1,28 +1,36 @@
-class Student implements Comparable<Student> {
+class Student extends BTree<Grade> implements Comparable<Student> {
 
-    BTree<Double> gpas;
-    String regno, name;
+         double gpa;
+         int courses;
 
-    Student (String regno, String name) {
-        this.regno=regno;
-        this.name=name;
-        gpas=new BTree<Double>();
-    }
+         @Override
+         public void in_order(BTreeNode<Grade> grade) {
+            if (grade!=null) {
+                in_order(grade.left);
+                gpa+=grade.data.grade;
+                courses++;
+                in_order(grade.right);
+               // test
+               // System.out.print(grade.data.course+":");
+               // System.out.print(grade.data.grade);
+            }
+         }
 
-    @Override
-    public String toString() {
-        return "";
-    }
+         @Override
+         public void in_order() {
+            in_order(rootNode);
+         }
 
-    public int compareTo (Student next) {
-        int totalGPA=0;
+         double getGPA() {
+            gpa=0.0;
+            courses=0;
+            in_order();
+            gpa/=courses;
+            return gpa;
+         }
 
-        return 0;
-    }
-
-    void print() {
-        System.out.print(regno + " : " + name + " : ");
-        gpas.in_order();
-    }
-
-}
+         @Override
+         public int compareTo(Student to) {
+            return (int) (10*(getGPA()-to.getGPA()));
+         }
+    };

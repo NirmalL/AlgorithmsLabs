@@ -1,10 +1,10 @@
 public class BTree<T extends Comparable<T>>{ 
 
-    private BTreeNode<T> rootNode; 
+    BTreeNode<T> rootNode; 
     
-    public class BTreeNode<T extends Comparable<T>>{ 
-	private T data; 
-	public BTreeNode<T> left, right; 
+    class BTreeNode<T extends Comparable<T>>{ 
+	T data; 
+	BTreeNode<T> left, right; 
 
 	BTreeNode(T data) {
 	    this.data = data; 

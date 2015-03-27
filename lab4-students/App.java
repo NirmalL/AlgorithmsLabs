@@ -21,6 +21,7 @@ class App {
                 if (stu!=null) {
                     in_order(stu.left);
                     System.out.println(stu.data.name+":"+stu.data.getCachedGPA());
+                    // System.out.println(stu.data.courses);
                     in_order(stu.right);
                 }
             }
@@ -39,8 +40,8 @@ class App {
             // }
             
             // test
-            System.out.println(stu.name+"::");
-            stu.in_order();
+            // System.out.println(stu.name+"::");
+            // stu.in_order();
             
             batch.insert(stu);
         }

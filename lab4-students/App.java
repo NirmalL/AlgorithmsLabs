@@ -22,7 +22,7 @@ class App {
                     in_order(stu.left);
                     System.out.println(stu.data.getCachedGPA()+" -- "+stu.data.name);
                     // System.out.println(stu.data.courses);
-                    stu.data.pre_order();
+                    stu.data.rev_in_order();
                     System.out.println();
                     in_order(stu.right);
                 }

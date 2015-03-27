@@ -20,8 +20,10 @@ class App {
             public void in_order(BTreeNode<Student> stu) {
                 if (stu!=null) {
                     in_order(stu.left);
-                    System.out.println(stu.data.name+":"+stu.data.getCachedGPA());
+                    System.out.println(stu.data.getCachedGPA()+" -- "+stu.data.name);
                     // System.out.println(stu.data.courses);
+                    stu.data.pre_order();
+                    System.out.println();
                     in_order(stu.right);
                 }
             }

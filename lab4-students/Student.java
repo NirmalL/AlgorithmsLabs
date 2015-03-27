@@ -20,7 +20,28 @@ class Student extends BTree<Grade> implements Comparable<Student> {
                   // System.out.print(grade.data.course+":");
                   // System.out.print(grade.data.grade+"\n");
                 
+                // System.out.print(grade.data.grade+" ");
+                
                 in_order(grade.right);
+                
+            }
+         }
+
+         @Override
+         public void pre_order(BTreeNode<Grade> grade) {
+            if (grade!=null) {
+                
+                pre_order(grade.right);
+                
+                gpa+=grade.data.grade;
+                courses++;
+                  // test
+                  // System.out.print(grade.data.course+":");
+                  // System.out.print(grade.data.grade+"\n");
+                
+                System.out.print(grade.data.grade+" ");
+                
+                pre_order(grade.left);
                 
             }
          }
@@ -45,6 +66,6 @@ class Student extends BTree<Grade> implements Comparable<Student> {
 
          @Override
          public int compareTo(Student to) {
-            return (int) -(10*(getGPA()-to.getGPA())); // [] reverse??
+            return (int) -(10*(getGPA()-to.getGPA())); // [k] reverse?? yep.
          }
     };

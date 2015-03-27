@@ -33,8 +33,8 @@ class Student extends BTree<Grade> implements Comparable<Student> {
                 
                 rev_in_order(grade.right);
                 
-                gpa+=grade.data.grade;
-                courses++;
+                // gpa+=grade.data.grade;
+                // courses++;
                   // test
                   // System.out.print(grade.data.course+":");
                   // System.out.print(grade.data.grade+"\n");

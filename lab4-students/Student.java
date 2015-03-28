@@ -23,10 +23,10 @@ class Student extends BTree<Grade> implements Comparable<Student> {
                 
             }
          }
-         
+
          @Override
          public int compareTo(Student to) {
-            return (int) -(10*(gpa-to.gpa));
+            return (int) -(100*(gpa-to.gpa));
          }
 
          @Override

@@ -30,11 +30,12 @@ class App {
         }
     }
 
+    final static double[] grades={4, 3.7, 3.3, 3, 2.7, 2.3, 2, 1.7, 1.3, 1, 0};
+
     static double randGrade() {
         Random rand = new Random();        
-        double randomNum = rand.nextDouble()*(4.0) + 1.0;
-        randomNum=((double) Math.round(100*randomNum))/100;
-        return randomNum;
+        int randomNum = rand.nextInt(grades.length);
+        return grades[randomNum];
     }
 
     public static void main(String[] args) {
@@ -62,7 +63,7 @@ class App {
                 stu.insert(new Grade("CO324", randGrade()));
                 stu.insert(new Grade("CO325", randGrade()));
                 stu.insert(new Grade("EE386", randGrade()));
-            
+            stu.in_order();
             batch.insert(stu);
         }
 

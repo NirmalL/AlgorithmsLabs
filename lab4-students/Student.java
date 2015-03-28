@@ -23,11 +23,6 @@ class Student extends BTree<Grade> implements Comparable<Student> {
             }
          }
 
-         @Override
-         public void in_order() {
-            in_order(rootNode);
-         }
-
          public void rev_in_order(BTreeNode<Grade> grade) {
             if (grade!=null) {
                 

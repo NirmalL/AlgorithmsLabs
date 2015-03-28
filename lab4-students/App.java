@@ -44,8 +44,7 @@ class App {
             public void in_order(BTreeNode<Student> stu) {
                 if (stu!=null) {
                     in_order(stu.left);
-                    System.out.println(stu.data.getCachedGPA()+" ["+stu.data.regnum+"] "+stu.data.name);
-                    stu.data.rev_in_order();
+                    System.out.println(stu.data);
                     System.out.println();
                     in_order(stu.right);
                 }

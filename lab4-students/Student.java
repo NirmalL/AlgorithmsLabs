@@ -2,7 +2,7 @@ class Student extends BTree<Grade> implements Comparable<Student> {
 
          double gpa;
          int courses;
-         String name, regnum;
+         String name, regnum, str="";
 
          Student (String name, String regnum) {
             this.name=name;
@@ -17,43 +17,21 @@ class Student extends BTree<Grade> implements Comparable<Student> {
                 
                 gpa+=grade.data.grade;
                 courses++;
+                str+=(grade.data.grade+" ");
 
                 in_order(grade.right);
                 
             }
          }
-
-         public void rev_in_order(BTreeNode<Grade> grade) {
-            if (grade!=null) {
-                
-                rev_in_order(grade.right);
- 
-                System.out.print(grade.data.grade+" ");
-                
-                rev_in_order(grade.left);
-                
-            }
-         }
-
-         public void rev_in_order() {
-            rev_in_order(rootNode);
-         }
-
-         double getGPA() {
-            gpa=0.0;
-            courses=0;
-            in_order();
-            gpa/=courses;
-            gpa=((double) Math.round(100*gpa))/100;
-            return gpa;
-         }
-
-         double getCachedGPA() {
-            return gpa;
+         
+         @Override
+         public int compareTo(Student to) {
+            return (int) -(10*(gpa-to.gpa));
          }
 
          @Override
-         public int compareTo(Student to) {
-            return (int) -(10*(getGPA()-to.getGPA()));
+         public String toString() {
+            in_order();
+            return ((double) Math.round(100*gpa/courses))/100+" ["+regnum+"] "+name+"\n"+str;
          }
     };

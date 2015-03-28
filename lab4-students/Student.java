@@ -32,6 +32,7 @@ class Student extends BTree<Grade> implements Comparable<Student> {
          @Override
          public String toString() {
             in_order();
+            str=str.substring(0, str.length()/2);
             return ((double) Math.round(100*gpa/courses))/100+" ["+regnum+"] "+name+"\n"+str;
          }
     };

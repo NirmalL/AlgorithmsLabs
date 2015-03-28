@@ -2,10 +2,11 @@ class Student extends BTree<Grade> implements Comparable<Student> {
 
          double gpa;
          int courses;
-         String name;
+         String name, regnum;
 
-         Student (String name) {
+         Student (String name, String regnum) {
             this.name=name;
+            this.regnum=regnum;
          }
 
          @Override
@@ -48,7 +49,7 @@ class Student extends BTree<Grade> implements Comparable<Student> {
             courses=0;
             in_order();
             gpa/=courses;
-            gpa=((int) (10*gpa))/10;
+            gpa=((double) Math.round(10*gpa))/10;
             return gpa;
          }
 

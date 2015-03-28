@@ -30,10 +30,10 @@ class App {
         }
     }
 
-    static double randGPA() {
+    static double randGrade() {
         Random rand = new Random();        
         double randomNum = rand.nextDouble()*(4.0) + 1.0;
-        randomNum=((int) (10*randomNum))/10;
+        randomNum=((double) Math.round(10*randomNum))/10;
         return randomNum;
     }
 
@@ -44,7 +44,7 @@ class App {
             public void in_order(BTreeNode<Student> stu) {
                 if (stu!=null) {
                     in_order(stu.left);
-                    System.out.println(stu.data.getCachedGPA()+" -- "+stu.data.name);
+                    System.out.println(stu.data.getCachedGPA()+" ["+stu.data.regnum+"] "+stu.data.name);
                     stu.data.rev_in_order();
                     System.out.println();
                     in_order(stu.right);
@@ -56,13 +56,13 @@ class App {
         
         for (int i=0; i<regnos.length; i++) {
 
-            Student stu=new Student(names[i]);
-                stu.insert(new Grade("CO321", randGPA()));
-                stu.insert(new Grade("CO322", randGPA()));
-                stu.insert(new Grade("CO323", randGPA()));
-                stu.insert(new Grade("CO324", randGPA()));
-                stu.insert(new Grade("CO325", randGPA()));
-                stu.insert(new Grade("EE386", randGPA()));
+            Student stu=new Student(names[i], regnos[i]);
+                stu.insert(new Grade("CO321", randGrade()));
+                stu.insert(new Grade("CO322", randGrade()));
+                stu.insert(new Grade("CO323", randGrade()));
+                stu.insert(new Grade("CO324", randGrade()));
+                stu.insert(new Grade("CO325", randGrade()));
+                stu.insert(new Grade("EE386", randGrade()));
             
             batch.insert(stu);
         }

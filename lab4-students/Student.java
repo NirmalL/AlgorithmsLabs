@@ -49,7 +49,7 @@ class Student extends BTree<Grade> implements Comparable<Student> {
             courses=0;
             in_order();
             gpa/=courses;
-            gpa=((double) Math.round(10*gpa))/10;
+            gpa=((double) Math.round(100*gpa))/100;
             return gpa;
          }
 

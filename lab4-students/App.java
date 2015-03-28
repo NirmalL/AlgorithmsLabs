@@ -33,7 +33,7 @@ class App {
     static double randGrade() {
         Random rand = new Random();        
         double randomNum = rand.nextDouble()*(4.0) + 1.0;
-        randomNum=((double) Math.round(10*randomNum))/10;
+        randomNum=((double) Math.round(100*randomNum))/100;
         return randomNum;
     }
 

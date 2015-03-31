@@ -1,0 +1,3 @@
+#! /bin/bash
+gcc -I./ btree.c -o btree btreeTest.c -o test;
+./test;

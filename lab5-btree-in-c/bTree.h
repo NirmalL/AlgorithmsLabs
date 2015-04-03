@@ -6,6 +6,7 @@ struct btreeNode {
   int data; 
   struct btreeNode * left;
   struct btreeNode * right; 
+  struct btreeNode * parent;
 };
 
 typedef struct btreeNode * btreeNode_t; 

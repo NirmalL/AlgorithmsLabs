@@ -71,12 +71,16 @@ void inOrder_iter(btree_t t)
 
   while (this)
   {
-    parent=this;
-    this=parent->left;
-  }
-  this=parent;
-  while (this)
-  {
-    //
+    // LEFT
+    while (this)
+    {
+      parent=this;
+      this=parent->left;
+    }
+    process(parent);
+    // this=(parent->right)?(parent->right):(parent);
+    this=parent->right;
+    // RIGHT
+    // 
   }
 }

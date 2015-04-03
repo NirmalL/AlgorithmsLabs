@@ -10,6 +10,6 @@ int main()
   for(i=0; i< sizeof(a)/sizeof(int); i++) 
     addNode(tree, a[i]); 
 
-  inOrder(tree);
+  inOrder_iter(tree);
 }
  

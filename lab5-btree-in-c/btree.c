@@ -59,7 +59,24 @@ void inOrder(btree_t t)
   inOderSubTree(t -> root); 
 }
 
+void process(btreeNode_t node)
+{
+  printf( "%d \n", node->data );
+}
+
 void inOrder_iter(btree_t t)
 {
-  
+  btreeNode_t this=t->root,
+              parent=NULL;
+
+  while (this)
+  {
+    parent=this;
+    this=parent->left;
+  }
+  this=parent;
+  while (this)
+  {
+    //
+  }
 }

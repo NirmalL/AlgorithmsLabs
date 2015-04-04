@@ -4,102 +4,102 @@
 
 btree_t newTree(void) 
 { 
-  btree_t tmp = (btree_t) malloc(sizeof(btree)); 
-  if(tmp) tmp -> root = NULL; 
-  return tmp; 
+    btree_t tmp = (btree_t) malloc(sizeof(btree)); 
+    if(tmp) tmp -> root = NULL; 
+    return tmp; 
 } 
 
 
 int addNode(btree_t tree, int val) 
 { 
-  btreeNode_t t = (btreeNode_t)malloc(sizeof(struct btreeNode)); 
-  if(t) { 
-    t -> data  = val; 
-    t -> left  = NULL; 
-    t -> right = NULL; 
-    t -> parent = NULL;
+    btreeNode_t t = (btreeNode_t)malloc(sizeof(struct btreeNode)); 
+    if(t) { 
+        t -> data    = val; 
+        t -> left    = NULL; 
+        t -> right = NULL; 
+        t -> parent = NULL;
 
-    if(tree -> root) { 
-      btreeNode_t tmp = tree -> root; 
-      while(tmp) { 
+        if(tree -> root) { 
+            btreeNode_t tmp = tree -> root; 
+            while(tmp) { 
 	if(tmp -> data > val) { 
-	  if(tmp -> left != NULL) tmp = tmp -> left; 
-	  else { 
-	    tmp -> left = t;
-      t->parent=tmp;
-	    return 0; 
-	  }
+	    if(tmp -> left != NULL) tmp = tmp -> left; 
+	    else { 
+	        tmp -> left = t;
+            t->parent=tmp;
+	        return 0; 
+	    }
 	}
 	else { 
-	  if(tmp -> right != NULL) tmp = tmp -> right; 
-	  else { 
-	    tmp -> right = t; 
-      t->parent=tmp;
-	    return 0;
-	  }
+	    if(tmp -> right != NULL) tmp = tmp -> right; 
+	    else { 
+	        tmp -> right = t; 
+            t->parent=tmp;
+	        return 0;
+	    }
 	}	
-      }
+            }
+        }
+        else { 
+            tree -> root = t; 
+        }
     }
-    else { 
-      tree -> root = t; 
-    }
-  }
 
-  return -1; 
+    return -1; 
 }
 
 void inOderSubTree(btreeNode_t t) 
 { 
-  if(t) { 
-    inOderSubTree(t -> left); 
-    printf("%d : ", t -> data); 
-    inOderSubTree(t -> right);
-  }
+    if(t) { 
+        inOderSubTree(t -> left); 
+        printf("%d : ", t -> data); 
+        inOderSubTree(t -> right);
+    }
 }
 
 void inOrder(btree_t t) 
 { 
-  inOderSubTree(t -> root); 
+    inOderSubTree(t -> root); 
 }
 
 btreeNode_t process(btreeNode_t node)
 {
-  printf( "%d \n", node->data );
-  return node;
+    printf( "%d \n", node->data );
+    return node;
 }
 
 void inOrder_iter(btree_t t)
 {
-  btreeNode_t 
-    this=t->root,
-    last=NULL;
+    btreeNode_t 
+        this=t->root,
+        last=NULL;
 
-  while (this)
-  {
-    // LEFT
-    // end of left
-    if ( last->parent && (last->parent->right != this) )
+    while (this)
     {
-      while (this)
-      {
-        last=this;
-        this=this->left;
-      }
-      this=last;
+        // LEFT
+        // end of left
+        if ( last->parent && (last->parent->right != this) )
+        {
+            while (this)
+            {
+                last=this;
+                this=this->left;
+            }
+            this=last;
+        }
+        // PROCESS
+        process(this);
+        // RIGHT
+        if (this->right)
+        {
+            this=this->right;
+        }
+        // go up
+        else
+        {
+            last=this;
+            process(this->parent);
+            this=this->parent->right;
+        }
     }
-    // PROCESS
-    process(this);
-    // RIGHT
-    if (this->right)
-    {
-      this=this->right;
-    }
-    // go up
-    else
-    {
-      last=this;
-      process(this->parent);
-      this=this->parent->right;
-    }
-  }
 }

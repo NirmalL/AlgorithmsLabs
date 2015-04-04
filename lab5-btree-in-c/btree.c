@@ -64,7 +64,10 @@ void inOrder(btree_t t)
 
 btreeNode_t process(btreeNode_t item)
 {
-    printf( "%d \n", item->data );
+    if (item)
+    {
+        printf( "%d \n", item->data );
+    }
     return item;
 }
 
@@ -104,64 +107,39 @@ StackItem push(Stack stack, btreeNode_t addr)
 btreeNode_t pop(Stack stack)
 {
     StackItem item=stack->top;
-    stack->top=stack->top->next;
-    return item->data;
+    if (item)
+    {
+        stack->top=item->next;
+        return item->data;
+    }
+    // printf("NULL in stack\n");
+    return NULL;
 }
 
 // << STACK
 
 void inOrder_iter(btree_t t)
 {
-    btreeNode_t 
-        this=t->root,
-        last=NULL;
+    btreeNode_t this=t->root;
+    // btreeNode_t last=NULL;
 
     Stack stack=newStack();
 
-    // while (this)
-    // {
-    //     // LEFT
-    //     // end of left
-    //     if ( last->parent && (last->parent->right != this) )
-    //     {
-    //         while (this)
-    //         {
-    //             last=this;
-    //             this=this->left;
-    //         }
-    //         this=last;
-    //     }
-    //     // PROCESS
-    //     process(this);
-    //     // RIGHT
-    //     if (this->right)
-    //     {
-    //         this=this->right;
-    //     }
-    //     // go up
-    //     else
-    //     {
-    //         last=this;
-    //         process(this->parent);
-    //         this=this->parent->right;
-    //     }
-    // }
-
     while (this)
     {
-        printf("-%d\n", this);
+        // printf("-%d\n", this);
         while (this)
         {
-            last=this;
+            // last=this;
             push(stack, this);
             this=this->left;
         }
         // this=last;
-        printf("--%d\n", last);
+        // printf("--%d\n", last);
 
-        while ( !(this=(process(pop(stack))->right)) )
+        while ( (this=pop(stack)) && !(this=(process(this)->right)) )
         {}
-        printf("---%d\n", this);
+        // printf("---%d\n", this);
     }
 
 }

@@ -62,11 +62,53 @@ void inOrder(btree_t t)
     inOderSubTree(t -> root); 
 }
 
-btreeNode_t process(btreeNode_t node)
+btreeNode_t process(btreeNode_t item)
 {
-    printf( "%d \n", node->data );
-    return node;
+    printf( "%d \n", item->data );
+    return item;
 }
+
+// STACK >>
+
+typedef struct
+{
+    btreeNode_t data;
+    struct StackItem * next;
+} _StackItem;
+
+typedef _StackItem * StackItem;
+
+typedef struct
+{
+    StackItem top;
+} _Stack;
+
+typedef _Stack * Stack;
+
+Stack newStack()
+{
+    Stack tmp = (Stack) malloc(sizeof(_Stack)); 
+    if(tmp) tmp -> top = NULL; 
+    return tmp;
+}
+
+StackItem push(Stack stack, btreeNode_t addr)
+{
+    StackItem t = (StackItem) malloc(sizeof(_StackItem));
+    t->data=addr;
+    t->next=stack->top;
+    stack->top=t;
+    return t;
+}
+
+btreeNode_t pop(Stack stack)
+{
+    StackItem item=stack->top;
+    stack->top=stack->top->next;
+    return item->data;
+}
+
+// << STACK
 
 void inOrder_iter(btree_t t)
 {

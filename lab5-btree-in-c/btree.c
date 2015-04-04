@@ -61,7 +61,7 @@ void inOrder(btree_t t)
 
 void process(int data)
 {
-    printf("%d ", data);
+    printf("%d :", data);
 }
 
 btreeNode_t _process(btreeNode_t item)

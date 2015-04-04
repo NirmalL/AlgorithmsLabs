@@ -73,12 +73,13 @@ btreeNode_t process(btreeNode_t item)
 
 // STACK >>
 
-typedef struct
+struct __StackItem
 {
     btreeNode_t data;
-    struct StackItem * next;
-} _StackItem;
+    struct __StackItem * next;
+};
 
+typedef struct __StackItem _StackItem;
 typedef _StackItem * StackItem;
 
 typedef struct

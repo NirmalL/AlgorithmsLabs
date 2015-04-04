@@ -1,12 +1,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct
+struct __StackItem
 {
     int data;
-    struct StackItem * next;
-} _StackItem;
+    struct __StackItem * next;
+};
 
+typedef struct __StackItem _StackItem;
 typedef _StackItem * StackItem;
 
 typedef struct

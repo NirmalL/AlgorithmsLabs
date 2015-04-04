@@ -59,11 +59,16 @@ void inOrder(btree_t t)
     inOderSubTree(t -> root); 
 }
 
-btreeNode_t process(btreeNode_t item)
+void process(int data)
+{
+    printf("%d ", data);
+}
+
+btreeNode_t _process(btreeNode_t item)
 {
     if (item)
     {
-        printf( "%d \n", item->data );
+        process( item->data );
     }
     return item;
 }
@@ -129,7 +134,7 @@ void inOrder_iter(btree_t t)
             this=this->left;
         }
 
-        while ( (this=pop(stack)) && !(this=(process(this)->right)) )
+        while ( (this=pop(stack)) && !(this=(_process(this)->right)) )
         {}
     }
 

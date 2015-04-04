@@ -116,32 +116,52 @@ void inOrder_iter(btree_t t)
         this=t->root,
         last=NULL;
 
+    Stack stack=newStack();
+
+    // while (this)
+    // {
+    //     // LEFT
+    //     // end of left
+    //     if ( last->parent && (last->parent->right != this) )
+    //     {
+    //         while (this)
+    //         {
+    //             last=this;
+    //             this=this->left;
+    //         }
+    //         this=last;
+    //     }
+    //     // PROCESS
+    //     process(this);
+    //     // RIGHT
+    //     if (this->right)
+    //     {
+    //         this=this->right;
+    //     }
+    //     // go up
+    //     else
+    //     {
+    //         last=this;
+    //         process(this->parent);
+    //         this=this->parent->right;
+    //     }
+    // }
+
     while (this)
     {
-        // LEFT
-        // end of left
-        if ( last->parent && (last->parent->right != this) )
-        {
-            while (this)
-            {
-                last=this;
-                this=this->left;
-            }
-            this=last;
-        }
-        // PROCESS
-        process(this);
-        // RIGHT
-        if (this->right)
-        {
-            this=this->right;
-        }
-        // go up
-        else
+        printf("-%d\n", this);
+        while (this)
         {
             last=this;
-            process(this->parent);
-            this=this->parent->right;
+            push(stack, this);
+            this=this->left;
         }
+        // this=last;
+        printf("--%d\n", last);
+
+        while ( !(this=(process(pop(stack))->right)) )
+        {}
+        printf("---%d\n", this);
     }
+
 }

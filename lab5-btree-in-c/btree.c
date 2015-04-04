@@ -17,7 +17,6 @@ int addNode(btree_t tree, int val)
         t -> data    = val; 
         t -> left    = NULL; 
         t -> right = NULL; 
-        t -> parent = NULL;
 
         if(tree -> root) { 
             btreeNode_t tmp = tree -> root; 
@@ -26,7 +25,6 @@ int addNode(btree_t tree, int val)
 	    if(tmp -> left != NULL) tmp = tmp -> left; 
 	    else { 
 	        tmp -> left = t;
-            t->parent=tmp;
 	        return 0; 
 	    }
 	}
@@ -34,7 +32,6 @@ int addNode(btree_t tree, int val)
 	    if(tmp -> right != NULL) tmp = tmp -> right; 
 	    else { 
 	        tmp -> right = t; 
-            t->parent=tmp;
 	        return 0;
 	    }
 	}	

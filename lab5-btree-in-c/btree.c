@@ -70,29 +70,36 @@ btreeNode_t process(btreeNode_t node)
 
 void inOrder_iter(btree_t t)
 {
-  btreeNode_t this=t->root,
-              parent=NULL;
+  btreeNode_t 
+    this=t->root,
+    last=NULL;
 
   while (this)
   {
     // LEFT
     // end of left
-    while (this)
+    if ( last->parent && (last->parent->right != this) )
     {
-      parent=this;
-      this=this->left;
+      while (this)
+      {
+        last=this;
+        this=this->left;
+      }
+      this=last;
     }
-    this=parent;
     // PROCESS
     process(this);
-    // RIGHT + (process)
-    this=
-      (this->right)?
-        (this->right)
-        :(
-          (this->parent->right==this)?
-            (process(this->parent->parent)->right)
-            :(process(this->parent)->right)
-        );
+    // RIGHT
+    if (this->right)
+    {
+      this=this->right;
+    }
+    // go up
+    else
+    {
+      last=this;
+      process(this->parent);
+      this=this->parent->right;
+    }
   }
 }

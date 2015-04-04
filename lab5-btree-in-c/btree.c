@@ -113,7 +113,6 @@ btreeNode_t pop(Stack stack)
         stack->top=item->next;
         return item->data;
     }
-    // printf("NULL in stack\n");
     return NULL;
 }
 
@@ -122,25 +121,19 @@ btreeNode_t pop(Stack stack)
 void inOrder_iter(btree_t t)
 {
     btreeNode_t this=t->root;
-    // btreeNode_t last=NULL;
 
     Stack stack=newStack();
 
     while (this)
     {
-        // printf("-%d\n", this);
         while (this)
         {
-            // last=this;
             push(stack, this);
             this=this->left;
         }
-        // this=last;
-        // printf("--%d\n", last);
 
         while ( (this=pop(stack)) && !(this=(process(this)->right)) )
         {}
-        // printf("---%d\n", this);
     }
 
 }

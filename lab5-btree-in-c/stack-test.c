@@ -34,8 +34,12 @@ StackItem push(Stack stack, int addr)
 int pop(Stack stack)
 {
     StackItem item=stack->top;
-    stack->top=stack->top->next;
-    return item->data;
+    if (item)
+    {
+        stack->top=item->next;
+        return item->data;
+    }
+    return NULL;
 }
 
 int main(int argc, char const *argv[])

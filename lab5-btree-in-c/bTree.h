@@ -19,6 +19,7 @@ typedef btree * btree_t;
 btree_t newTree(void); 
 int addNode(btree_t, int); 
 void inOrder(btree_t); 
+void inOrder_iter(btree_t);
 
 
 #endif

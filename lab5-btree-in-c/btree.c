@@ -110,10 +110,13 @@ StackItem push(Stack stack, btreeNode_t addr)
 btreeNode_t pop(Stack stack)
 {
     StackItem item=stack->top;
+    btreeNode_t val;
     if (item)
     {
         stack->top=item->next;
-        return item->data;
+        val=item->data;
+        free (item);
+        return val;
     }
     return NULL;
 }
